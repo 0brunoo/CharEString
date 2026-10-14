@@ -86,6 +86,60 @@ void textoChar()
   char idadeTexto[] = "45"; // 52, 53, \0
   int idade = atoi(idadeTexto);
   Serial.println(idade);
+
+  //* Montando texto
+  char buffer[100];
+  char *local = "Sala de aula";
+  float temperatura = 26.4;
+  int umidade = 58;
+
+  //* '\n' mudança de linha
+  //* '\r' retorno ao começo da linha
+  snprintf(buffer, sizeof(buffer), "%s | Temp.: %f | Umid.: %d %% \n\r", local, temperatura, umidade);
+
+  Serial.print(buffer);
+  Serial.printf("O tamanho do Buffer é %lu \n\r", sizeof(buffer));
+
+  //* snprintf monta um texto dentro de um vetor de char
+  //* Sintaxe: snprint(variavelOndeSeraMontadoOTexto, TamanhoMaximoDoTexto, TextoComFormatação, ItensDeFormado)
+  //* Isso é muito útil quando você quer:
+  //* - salvar o texto em uma variável
+  //* - mandar para o display
+  //* - imprimir na serial
+  //* - enviar por MQTT (IoT)
+
+  //* ESPECIFICADORES
+
+  //* %d ou %i      -int
+  //* %u            -usingned int
+  //* %ld           -long
+  //* %lu           -unsingned long
+  //* %f            -float
+  //* %e            -notação cientifica
+  //* %g            -float, formato mais curto
+  //* %c            -char
+  //* %s            -char* (string)
+  //* %x ou %X      -hexadecimal minúsculo/maiúsculo
+  //* %o            -octal
+  //* %p            -ponteiro
+  //* %%            -o próprio %
+
+  //* Flag, Largura, e Precisão
+
+  //* %5d           -imprime com largura mínima de 5, alinhado a direita [    3], [  100], [10000000]
+  //* %-4d          -imprime com largura mínima de 4, alinnha a esquerda [3   ], [100 ], [123456]
+  //* %03d          -completa com zeros a esquerda, [003]
+  //* %+d           -sempre mostra o sinal [+3] [-3]
+  //* %.2f          -2 casas decimais num float
+  //* %4.2f         -largura mínima 4 a direita com 2 casas decimais
+  //* %02X          -exadecima com 2 digitos [0F] [3A]
+  //* %#x           -imprimeo prefixo 0x [0x2a] [0xF]
+  //* %.3s          -somente os 3 primeiros caracteres da string
+  //* %*d           -largura passada como argumento ex.:
+  //* int largura = 3;
+  //* int numero = 9;
+  //* snprintf(buffer, sizeof(buffer), "numero %*d", largura, numero)
+  //* Serial.print(buffer) -> [  9]
 }
 
 void textoString()
@@ -144,10 +198,11 @@ void textoString()
 
   //* Verificando se a String está vazia
   String textoVazio = "";
-  if(textoVazio.length() == 0) Serial.println("O texto está vazio");
+  if (textoVazio.length() == 0)
+    Serial.println("O texto está vazio");
 
   //* Convertendo String para const char*
   //* Isto é útil quando alguma biblioteca espera texto estilo C
-  const char* textoComoChar = mensagem.c_str();
+  const char *textoComoChar = mensagem.c_str();
   Serial.println(textoComoChar);
 }
