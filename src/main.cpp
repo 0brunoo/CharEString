@@ -1,3 +1,13 @@
+/*
+==================================
+Projeto: Sring e char em C
+Descrição: Pesquisando como funciona e como manipular String e char
+Autor: Bruno Henrique Alcantara Santos
+Data: 14/10/2026
+Versão 0.1
+==================================
+*/
+
 #include <Arduino.h>
 #include <string.h> //* strlen, strcpy, strcat, strcmp, strchr
 #include <stdlib.h> //* atoi
