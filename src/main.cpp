@@ -19,6 +19,8 @@ void setup()
 {
   Serial.begin(9600);
   Serial.println();
+  textoChar();
+  textoString();
 }
 
 void loop() {}
@@ -60,11 +62,11 @@ void textoChar()
   //!   TEXTO EDITAVEL COM char[]
   //!================================
 
-  char nomeAluno[20] = "Brhuno";
+  char nomeAluno[20] = "Brhno";
   Serial.println(nomeAluno);
 
   //* Alterando caracteres individualmente
-  nomeAluno[2] = 'o';
+  nomeAluno[2] = 'u';
   Serial.println(nomeAluno);
 
   //* Copiando outro texto para dentro do vetor
